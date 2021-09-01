@@ -1,0 +1,42 @@
+deviceId	address	name	description	unit	type	len	factor	offset	formula	role	room	poll	wp	isScale
+1	4999	System Clock Year	Systemzeit Jahr		uint16be	1	1	0		value		true	false	false
+1	5000	System Clock Month	Systemzeit Monat		uint16be	1	1	0		value		true	false	false
+1	5001	System Clock Day	Systemzeit Tag		uint16be	1	1	0		value		true	false	false
+1	5002	System Clock Hour	Systemzeit Stunde		uint16be	1	1	0		value		true	false	false
+1	5003	System Clock Minute	Systemzeit Minute		uint16be	1	1	0		value		true	false	false
+1	12999	Start/Stop	Start/Stop Start(CF) Stop (CF)		uint16be	1	1	0		value		true	false	false
+1	13001	Load Adjustment mode	Energie Management Modus ON/OFF(1) / Energieoptimiert(2)		uint16be	1	1	0		value		true	false	false
+1	13002	Load 1 timing period 1: Start hour		h	uint16be	1	1	0		value		true	false	false
+1	13003	Load 1 timing period 1: Start minute		min	uint16be	1	1	0		value		true	false	false
+1	13004	Load 1 timing period 1: End hour		min	uint16be	1	1	0		value		true	false	false
+1	13005	Load 1 timing period 1: End minute		h	uint16be	1	1	0		value		true	false	false
+1	13006	Load 1 timing period 2: Start hour		h	uint16be	1	1	0		value		true	false	false
+1	13007	Load 1 timing period 2: Start minute		min	uint16be	1	1	0		value		true	false	false
+1	13008	Load 1 timing period 2: End hour		h	uint16be	1	1	0		value		true	false	false
+1	13009	Load 1 timing period 2: End minute		min	uint16be	1	1	0		value		true	false	false
+1	13010	Load 1 ON/OFF mode	Load 1 ON/OFF mode    ON(170/AA)/ OFF (85/55)		uint16be	1	1	0		value		true	false	false
+1	13011	Load 1 power optimized mode: Start hour		h	uint16be	1	1	0		value		true	false	false
+1	13012	Load 1 power optimized mode: Start minute		min	uint16be	1	1	0		value		true	false	false
+1	13013	Load 1 power optimized mode: End hour		h	uint16be	1	1	0		value		true	false	false
+1	13014	Load 1 power optimized mode: End Minute 		min	uint16be	1	1	0		value		true	false	false
+1	13015	Optimized power of load 1	Optimized power of load 1	W	uint16be	1	1	0		value		true	false	false
+1	13049	EMS mode selection 	EMS Modus		uint16be	1	1	0		value		true	false	false
+1	13050	Charge/discharge command	Ext. Sollvorgabe Laden170(AA)/ Stop187(BB)/ Entladen204(CC) 		uint16be	1	1	0		value		true	false	false
+1	13051	Charge/discharge power	Ext. Sollvorgabe Lade/Entladeleistung		uint16be	1	1	0		value		true	false	false
+1	13055	Batterie nominal Voltage	Nominal Spannung Batterie	V	uint16be	1	0.1	0		value		true	false	false
+1	13056	Battery capacity	Batteriekapazität	Ah	uint16be	1	1	0		value		true	false	false
+1	13057	Max. SOC	Max SOC	%	uint16be	1	0.1	0		value		true	false	false
+1	13058	Min. SOC	Min SOC	%	uint16be	1	0.1	0		value		true	false	false
+1	13059	Battery overvoltage threshold	Batterie Überspannungs Threshold	V	int16be	1	0.1	0		value		true	false	false
+1	13060	Battery undervoltage threshold	Batterie Unterspannungs Threshold	V	int16be	1	0.1	0		value		true	false	false
+1	13061	Battery over temperature threshold	Batterie Übertemperatur Threshold	°C	int16be	1	0.1	0		value		true	false	false
+1	13062	Battery under temperature threshold	Batterie Übertemperatur Threshold	°C	int16be	1	0.1	0		value		true	false	false
+1	13064	Terminated current of constant voltage charging		°C	int16be	1	0.001	0		value		true	false	false
+1	13065	Max. discharge current	Max. Entlade Strom	A	uint16be	1	0.001	0		value		true	false	false
+1	13066	Max. charge current	Max. Lade Strom	A	uint16be	1	0.001	0		value		true	false	false
+1	13079	External EMS heartbeat			uint16be	1	1	0		value		true	false	false
+1	13083	Start  Charging Power	u.U. Leistung, mit welcher ein Ladevorgang begonnen wird. Klärung erwünscht	W	uint16be	1	1	0		value		true	false	false
+1	13084	Start Discharging Power	u.U. Leistung, mit welcher ein Entladevorgang begonnen wird. Klärung erwünscht	W	uint16be	1	1	0		value		false	false	false
+1	13085	Meter Comm.	Kommunikation mit Energie Meter des WR	W	uint16be	1	1	0		value		true	false	false
+1	13086	Export Power Limitation	Einspeise Limitierung AN(170/AA) AUS(85/55h)		uint16be	1	1	0		value		true	false	false
+1	13099	SOC Reserve	SOC Reserve	%	uint16be	1	1	0		value		true	false	false
