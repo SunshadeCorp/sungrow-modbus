@@ -155,76 +155,99 @@ registers:
 #    # of pvstats because I didn't want to change my MQTT -> influxdb pipeline when I migrated from pvstats
 #    # to modbus4mqtt for these numbers.
 #
-#  - pub_topic: "solar"
-#    json_key: daily_pv_power
-#    type: uint16
-#    address: 5002
-#    table: input
-#    pub_only_on_change: false
-#    scale: 100
-#  - pub_topic: "solar"
-#    json_key: lifetime_pv_power
-#    type: uint16
-#    address: 5003
-#    table: input
-#    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: daily_output_energy
+    type: uint16
+    address: 5002
+    table: input
+    pub_only_on_change: false
+    scale: 0.1
+    unit: 'kWh'
+  - pub_topic: "solar"
+    json_key: total_output_energy
+    type: uint32
+    address: 5003
+    table: input
+    pub_only_on_change: false
+    scale: 0.1
+    unit: 'kWh'
 #  - pub_topic: "solar"
 #    json_key: total_run_time
 #    type: uint16
 #    address: 5005
 #    table: input
 #    pub_only_on_change: false
-#  - pub_topic: "solar"
-#    json_key: internal_temp
-#    type: uint16
-#    address: 5007
-#    table: input
-#    pub_only_on_change: false
-#    scale: 0.1
-#  - pub_topic: "solar"
-#    json_key: pv1_voltage
-#    type: uint16
-#    address: 5010
-#    table: input
-#    pub_only_on_change: false
-#    scale: 0.1
-#  - pub_topic: "solar"
-#    json_key: pv1_current
-#    type: uint16
-#    address: 5011
-#    table: input
-#    pub_only_on_change: false
-#    scale: 0.1
-#    unit: "A"
-#  - pub_topic: "solar"
-#    json_key: pv2_voltage
-#    type: uint16
-#    address: 5012
-#    table: input
-#    pub_only_on_change: false
-#    scale: 0.1
-#  - pub_topic: "solar"
-#    json_key: pv2_current
-#    type: uint16
-#    address: 5013
-#    table: input
-#    pub_only_on_change: false
-#    scale: 0.1
-#    unit: "A"
-#  - pub_topic: "solar"
-#    json_key: total_pv_power
-#    type: uint16
-#    address: 5016
-#    table: input
-#    pub_only_on_change: false
-#    unit: "W"
-#  - pub_topic: "solar"
-#    json_key: grid_voltage
-#    type: uint16
-#    address: 5018
-#    table: input
-#    pub_only_on_change: false
-#    scale: 0.1
+  - pub_topic: "solar"
+    json_key: inside_temperature
+    type: int16
+    address: 5007
+    table: input
+    pub_only_on_change: false
+    scale: 0.1
+    unit: '°C'
+  - pub_topic: "solar"
+    json_key: mppt1_voltage
+    type: uint16
+    address: 5010
+    table: input
+    pub_only_on_change: false
+    scale: 0.1
+    unit: 'V'
+  - pub_topic: "solar"
+    json_key: mppt1_current
+    type: uint16
+    address: 5011
+    table: input
+    pub_only_on_change: false
+    scale: 0.1
+    unit: 'A'
+  - pub_topic: "solar"
+    json_key: mppt2_voltage
+    type: uint16
+    address: 5012
+    table: input
+    pub_only_on_change: false
+    scale: 0.1
+    unit: 'V'
+  - pub_topic: "solar"
+    json_key: mppt2_current
+    type: uint16
+    address: 5013
+    table: input
+    pub_only_on_change: false
+    scale: 0.1
+    unit: 'A'
+  - pub_topic: "solar"
+    json_key: total_pv_power
+    type: uint32
+    address: 5016
+    table: input
+    pub_only_on_change: false
+    unit: 'W'
+  - pub_topic: "solar"
+    json_key: phase_a_voltage
+    type: uint16
+    address: 5018
+    table: input
+    pub_only_on_change: false
+    scale: 0.1
+    unit: 'V'
+  - pub_topic: "solar"
+    json_key: phase_b_voltage
+    type: uint16
+    address: 5019
+    table: input
+    pub_only_on_change: false
+    scale: 0.1
+    unit: 'V'
+  - pub_topic: "solar"
+    json_key: phase_c_voltage
+    type: uint16
+    address: 5020
+    table: input
+    pub_only_on_change: false
+    scale: 0.1
+    unit: 'V'
 #  - pub_topic: "solar"
 #    json_key: inverter_current
 #    type: uint16
@@ -238,14 +261,27 @@ registers:
 #    address: 5030
 #    table: input
 #    pub_only_on_change: false
-#  - pub_topic: "solar"
-#    json_key: grid_frequency
-#    type: uint16
-#    address: 5035
-#    table: input
-#    pub_only_on_change: false
-#    scale: 0.1
-
+  - pub_topic: "solar"
+    json_key: reactive_power
+    type: int32
+    address: 5032
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: power_factor
+    type: int16
+    address: 5034
+    table: input
+    pub_only_on_change: false
+    scale: 0.001
+  - pub_topic: "solar"
+    json_key: grid_frequency
+    type: uint16
+    address: 5035
+    table: input
+    pub_only_on_change: false
+    scale: 0.1
+    unit: 'Hz'
   - pub_topic: "solar"
     json_key: running_state
     type: uint16
