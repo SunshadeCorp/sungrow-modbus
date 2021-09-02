@@ -69,13 +69,18 @@ def txt_to_solariot():
 
 
 if __name__ == '__main__':
-    txt_to_solariot()
+    # txt_to_solariot()
 
-    # client = SungrowModbusTcpClient(sungrowIp)
+    client = SungrowModbusTcpClient(host='192.168.178.66', port=502, timeout=10)
+    result = client.read_input_registers(address=4950, count=100, unit=0x01)
+    print(result.registers)
+    # client.read_input_registers(address=13000, count=125)
+    # client.read_holding_registers(address=5000, count=10)
+    # client.read_holding_registers(address=13000, count=110)
     # running = True
 
     # print(getHoldingValue("Voltage Phase A"))
     # print(getHoldingValue("Voltage Phase B"))
     # print(getHoldingValue("Voltage Phase C"))
 
-    # client.close()
+    client.close()
