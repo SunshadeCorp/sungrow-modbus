@@ -1,4 +1,4 @@
-ip: 192.168.1.89
+ip: 192.168.178.66
 port: 502
 update_rate: 5
 address_offset: 0
@@ -405,7 +405,7 @@ registers:
     address: 13033
     table: input
     pub_only_on_change: false
-    scale: 0.1
+    # scale: 0.1
   - pub_topic: "solar"
     json_key: mystery_5001
     type: uint16
