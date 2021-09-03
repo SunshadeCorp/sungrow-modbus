@@ -90,12 +90,15 @@ def modbus4mqtt_to_home_assistant(filename: str):
                 'platform': 'mqtt',
                 'name': f'sungrow-{register["json_key"]}',
                 'state_topic': f'modbus4mqtt/{register["pub_topic"]}',
-                'value_template': f'{{{{ value_json.{register["json_key"]} }}}}'
+                'value_template': f'{{{{ value_json.{register["json_key"]} }}}}',
+                'unique_id': f'sungrow.{register["json_key"]}',
             }
             if 'unit' in register:
                 sensor['unit_of_measurement'] = register['unit']
             target_dict['sensor'].append(sensor)
-    print(yaml.dump(target_dict, Dumper=MyDumper, default_flow_style=False))
+    dump = yaml.dump(target_dict, Dumper=MyDumper, default_flow_style=False)
+    dump = dump.replace('\\xC2\\xB0C', '\\xB0C')
+    print(dump)
 
 
 if __name__ == '__main__':
