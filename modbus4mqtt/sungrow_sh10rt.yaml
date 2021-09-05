@@ -283,6 +283,24 @@ registers:
     scale: 0.1
     unit: 'Hz'
   - pub_topic: "solar"
+    json_key: system_state
+    type: uint16
+    address: 12999
+    table: input
+    pub_only_on_change: false
+    value_map:
+      stop: 0x2
+      standby: 0x8
+      initial_standby: 0x10
+      startup: 0x20
+      running: 0x40
+      fault: 0x100
+      running_in_maintain_mode: 0x400
+      running_in_forced_mode: 0x800
+      running_in_off_grid_mode: 0x1000
+      restarting: 0x2501
+      running_in_external_ems_mode: 0x4000
+  - pub_topic: "solar"
     json_key: running_state
     type: uint16
     address: 13000
