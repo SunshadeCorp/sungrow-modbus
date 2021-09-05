@@ -5,6 +5,47 @@ address_offset: 0
 variant: sungrow
 scan_batching: 100
 registers:
+  #  #  - #pub_topic: "date_time/minutes"
+  #  #    address: 5003
+  #  #  - #pub_topic: "date_time/seconds"
+  #  #    address: 5004
+  #  - pub_topic: "load_control/mode"
+  #    value_map:
+  #      timer: 0
+  #      manual: 1
+  #      optimized: 2
+  #    address: 13001
+  #  - pub_topic: "load_control/timer/start_time_1_hours"
+  #    address: 13002
+  #  - pub_topic: "load_control/timer/start_time_1_minutes"
+  #    address: 13003
+  #  - pub_topic: "load_control/timer/end_time_1_hours"
+  #    address: 13004
+  #  - pub_topic: "load_control/timer/end_time_1_minutes"
+  #    address: 13005
+  #  - pub_topic: "load_control/timer/start_time_2_hours"
+  #    address: 13006
+  #  - pub_topic: "load_control/timer/start_time_2_minutes"
+  #    address: 13007
+  #  - pub_topic: "load_control/timer/end_time_2_hours"
+  #    address: 13008
+  #  - pub_topic: "load_control/timer/end_time_2_minutes"
+  #    address: 13009
+  #  - pub_topic: "load_control/on_off "
+  #    value_map:
+  #      on: 170
+  #      off: 85
+  #    address: 13010
+  #  - pub_topic: "load_control/optimized/start_time_hours"
+  #    address: 13011
+  #  - pub_topic: "load_control/optimized/start_time_minutes"
+  #    address: 13012
+  #  - pub_topic: "load_control/optimized/end_time_hours"
+  #    address: 13013
+  #  - pub_topic: "load_control/optimized/end_time_minutes"
+  #    address: 13014
+  #  - pub_topic: "load_control/optimized/power"
+  #    address: 13015
   #  - pub_topic: "ems/EMS_MODE"
   #    set_topic: "ems/EMS_MODE/set"
   #    address: 13049
@@ -25,6 +66,46 @@ registers:
   #  - pub_topic: "no_export/partial/limit"
   #    set_topic: "no_export/partial/limit/set"
   #    address: 13073
+  #  - pub_topic: "bat_usage_time/weekday_usage/start_time_1_hours"
+  #    address: 13122
+  #  - pub_topic: "bat_usage_time/weekday_usage/start_time_1_minutes"
+  #    address: 13123
+  #  - pub_topic: "bat_usage_time/weekday_usage/end_time_1_hours"
+  #    set_topic: "bat_usage_time/weekday_usage/end_time_1_hours/set"
+  #    address: 13124
+  #  - pub_topic: "bat_usage_time/weekday_usage/end_time_1_minutes"
+  #    address: 13125
+  #  - pub_topic: "bat_usage_time/weekday_usage/start_time_2_hours"
+  #    address: 13126
+  #  - pub_topic: "bat_usage_time/weekday_usage/start_time_2_minutes"
+  #    address: 13127
+  #  - pub_topic: "bat_usage_time/weekday_usage/end_time_2_hours"
+  #    set_topic: "bat_usage_time/weekday_usage/end_time_2_hours/set"
+  #    address: 13128
+  #  - pub_topic: "bat_usage_time/weekday_usage/end_time_2_minutes"
+  #    address: 13129
+  #  - pub_topic: "bat_usage_time/weekend_usage"
+  #    set_topic: "bat_usage_time/weekend_usage/set"
+  #    value_map:
+  #      disabled: 85
+  #      enabled: 170
+  #    address: 13130
+  #  - pub_topic: "bat_usage_time/weekend_usage/start_time_1_hours"
+  #    address: 13131
+  #  - pub_topic: "bat_usage_time/weekend_usage/start_time_1_minutes"
+  #    address: 13132
+  #  - pub_topic: "bat_usage_time/weekend_usage/end_time_1_hours"
+  #    address: 13133
+  #  - pub_topic: "bat_usage_time/weekend_usage/end_time_1_minutes"
+  #    address: 13134
+  #  - pub_topic: "bat_usage_time/weekend_usage/start_time_2_hours"
+  #    address: 13135
+  #  - pub_topic: "bat_usage_time/weekend_usage/start_time_2_minutes"
+  #    address: 13136
+  #  - pub_topic: "bat_usage_time/weekend_usage/end_time_2_hours"
+  #    address: 13137
+  #  - pub_topic: "bat_usage_time/weekend_usage/end_time_2_minutes"
+  #    address: 13138
   #  - pub_topic: "forced_charge/mode"
   #    set_topic: "forced_charge/mode/set"
   #    retain: true
@@ -69,87 +150,6 @@ registers:
   #  - pub_topic: "forced_charge/period_2/target_soc"
   #    set_topic: "forced_charge/period_2/target_soc/set"
   #    address: 13150
-  #  #  - #pub_topic: "date_time/minutes"
-  #  #    address: 5003
-  #  #  - #pub_topic: "date_time/seconds"
-  #  #    address: 5004
-  #  - pub_topic: "load_control/mode"
-  #    value_map:
-  #      timer: 0
-  #      manual: 1
-  #      optimized: 2
-  #    address: 13001
-  #  - pub_topic: "load_control/timer/start_time_1_hours"
-  #    address: 13002
-  #  - pub_topic: "load_control/timer/start_time_1_minutes"
-  #    address: 13003
-  #  - pub_topic: "load_control/timer/end_time_1_hours"
-  #    address: 13004
-  #  - pub_topic: "load_control/timer/end_time_1_minutes"
-  #    address: 13005
-  #  - pub_topic: "load_control/timer/start_time_2_hours"
-  #    address: 13006
-  #  - pub_topic: "load_control/timer/start_time_2_minutes"
-  #    address: 13007
-  #  - pub_topic: "load_control/timer/end_time_2_hours"
-  #    address: 13008
-  #  - pub_topic: "load_control/timer/end_time_2_minutes"
-  #    address: 13009
-  #  - pub_topic: "load_control/on_off "
-  #    value_map:
-  #      on: 170
-  #      off: 85
-  #    address: 13010
-  #  - pub_topic: "load_control/optimized/start_time_hours"
-  #    address: 13011
-  #  - pub_topic: "load_control/optimized/start_time_minutes"
-  #    address: 13012
-  #  - pub_topic: "load_control/optimized/end_time_hours"
-  #    address: 13013
-  #  - pub_topic: "load_control/optimized/end_time_minutes"
-  #    address: 13014
-  #  - pub_topic: "load_control/optimized/power"
-  #    address: 13015
-  #  - pub_topic: "bat_usage_time/weekday_usage/start_time_1_hours"
-  #    address: 13122
-  #  - pub_topic: "bat_usage_time/weekday_usage/start_time_1_minutes"
-  #    address: 13123
-  #  - pub_topic: "bat_usage_time/weekday_usage/end_time_1_hours"
-  #    set_topic: "bat_usage_time/weekday_usage/end_time_1_hours/set"
-  #    address: 13124
-  #  - pub_topic: "bat_usage_time/weekday_usage/end_time_1_minutes"
-  #    address: 13125
-  #  - pub_topic: "bat_usage_time/weekday_usage/start_time_2_hours"
-  #    address: 13126
-  #  - pub_topic: "bat_usage_time/weekday_usage/start_time_2_minutes"
-  #    address: 13127
-  #  - pub_topic: "bat_usage_time/weekday_usage/end_time_2_hours"
-  #    set_topic: "bat_usage_time/weekday_usage/end_time_2_hours/set"
-  #    address: 13128
-  #  - pub_topic: "bat_usage_time/weekday_usage/end_time_2_minutes"
-  #    address: 13129
-  #  - pub_topic: "bat_usage_time/weekend_usage"
-  #    set_topic: "bat_usage_time/weekend_usage/set"
-  #    value_map:
-  #      disabled: 85
-  #      enabled: 170
-  #    address: 13130
-  #  - pub_topic: "bat_usage_time/weekend_usage/start_time_1_hours"
-  #    address: 13131
-  #  - pub_topic: "bat_usage_time/weekend_usage/start_time_1_minutes"
-  #    address: 13132
-  #  - pub_topic: "bat_usage_time/weekend_usage/end_time_1_hours"
-  #    address: 13133
-  #  - pub_topic: "bat_usage_time/weekend_usage/end_time_1_minutes"
-  #    address: 13134
-  #  - pub_topic: "bat_usage_time/weekend_usage/start_time_2_hours"
-  #    address: 13135
-  #  - pub_topic: "bat_usage_time/weekend_usage/start_time_2_minutes"
-  #    address: 13136
-  #  - pub_topic: "bat_usage_time/weekend_usage/end_time_2_hours"
-  #    address: 13137
-  #  - pub_topic: "bat_usage_time/weekend_usage/end_time_2_minutes"
-  #    address: 13138
   #
   #    # The following registers are published together in one JSON message to replicate the functionality
   #    # of pvstats because I didn't want to change my MQTT -> influxdb pipeline when I migrated from pvstats
