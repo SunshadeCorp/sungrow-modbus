@@ -295,6 +295,7 @@ registers:
     table: input
     pub_only_on_change: false
     mask: 0x1
+    sensor_type: 'binary'
   - pub_topic: "solar"
     json_key: running_state_battery_charging
     type: uint16
@@ -303,6 +304,7 @@ registers:
     pub_only_on_change: false
     mask: 0x2
     shift: 1
+    sensor_type: 'binary'
   - pub_topic: "solar"
     json_key: running_state_battery_discharging
     type: uint16
@@ -311,6 +313,7 @@ registers:
     pub_only_on_change: false
     mask: 0x4
     shift: 2
+    sensor_type: 'binary'
   - pub_topic: "solar"
     json_key: running_state_positive_load_power
     type: uint16
@@ -319,6 +322,7 @@ registers:
     pub_only_on_change: false
     mask: 0x8
     shift: 3
+    sensor_type: 'binary'
   - pub_topic: "solar"
     json_key: running_state_feed_in_power
     type: uint16
@@ -327,6 +331,7 @@ registers:
     pub_only_on_change: false
     mask: 0x10
     shift: 4
+    sensor_type: 'binary'
   - pub_topic: "solar"
     json_key: running_state_import_power_from_grid
     type: uint16
@@ -335,6 +340,7 @@ registers:
     pub_only_on_change: false
     mask: 0x20
     shift: 5
+    sensor_type: 'binary'
   - pub_topic: "solar"
     json_key: running_state_reserved
     type: uint16
@@ -343,6 +349,7 @@ registers:
     pub_only_on_change: false
     mask: 0x40
     shift: 6
+    sensor_type: 'binary'
   - pub_topic: "solar"
     json_key: running_state_negative_load_power
     type: uint16
@@ -351,6 +358,7 @@ registers:
     pub_only_on_change: false
     mask: 0x80
     shift: 7
+    sensor_type: 'binary'
   - pub_topic: "solar"
     json_key: daily_pv_generation
     type: uint16
@@ -468,6 +476,7 @@ registers:
     pub_only_on_change: false
     scale: 0.1
     unit: '%'
+    class: 'battery'
   - pub_topic: "solar"
     json_key: battery_state_of_health
     type: uint16

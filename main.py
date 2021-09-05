@@ -83,19 +83,36 @@ def modbus4mqtt_to_home_assistant(filename: str):
         except yaml.YAMLError as e:
             print(e)
             return
-    target_dict = {'sensor': []}
+    target_dict = {'sensor': [], 'binary_sensor': []}
     for register in content['registers']:
         if 'json_key' in register:
             sensor = {
                 'platform': 'mqtt',
-                'name': f'sungrow-{register["json_key"]}',
+                'name': f'{register["json_key"]}',
                 'state_topic': f'modbus4mqtt/{register["pub_topic"]}',
                 'value_template': f'{{{{ value_json.{register["json_key"]} }}}}',
                 'unique_id': f'sungrow.{register["json_key"]}',
             }
             if 'unit' in register:
                 sensor['unit_of_measurement'] = register['unit']
-            target_dict['sensor'].append(sensor)
+                if 'class' in register:
+                    sensor['device_class'] = register['class']
+                elif 'A' == register['unit']:
+                    sensor['device_class'] = 'current'
+                elif 'V' == register['unit']:
+                    sensor['device_class'] = 'voltage'
+                elif 'Wh' == register['unit'] or 'kWh' == register['unit']:
+                    sensor['device_class'] = 'energy'
+                elif 'W' == register['unit'] or 'kW' == register['unit']:
+                    sensor['device_class'] = 'power'
+                elif '\\xC2\\xB0C' == register['unit']:
+                    sensor['device_class'] = 'temperature'
+            if 'sensor_type' in register and register['sensor_type'] == 'binary':
+                sensor['payload_off'] = 0
+                sensor['payload_on'] = 1
+                target_dict['binary_sensor'].append(sensor)
+            else:
+                target_dict['sensor'].append(sensor)
     dump = yaml.dump(target_dict, Dumper=MyDumper, default_flow_style=False)
     dump = dump.replace('\\xC2\\xB0C', '\\xB0C')
     print(dump)
