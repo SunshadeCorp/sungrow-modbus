@@ -9,6 +9,15 @@ registers:
   #  #    address: 5003
   #  #  - #pub_topic: "date_time/seconds"
   #  #    address: 5004
+  - pub_topic: "start_stop"
+    value_map:
+      start: 0xcf
+      stop: 0xce
+    address: 12999
+  - pub_topic: "battery_maintenance"
+    value_map:
+      maintenance: 0xaa
+    address: 13000
   #  - pub_topic: "load_control/mode"
   #    value_map:
   #      timer: 0
@@ -66,6 +75,14 @@ registers:
   #  - pub_topic: "no_export/partial/limit"
   #    set_topic: "no_export/partial/limit/set"
   #    address: 13073
+  - pub_topic: "export_power_limitation"
+    value_map:
+      enable: 0xaa
+      disable: 0x55
+    address: 13086
+  - pub_topic: "reserved_soc_for_backup"
+    address: 13099
+    unit: '%'
   #  - pub_topic: "bat_usage_time/weekday_usage/start_time_1_hours"
   #    address: 13122
   #  - pub_topic: "bat_usage_time/weekday_usage/start_time_1_minutes"
@@ -155,6 +172,42 @@ registers:
   #    # of pvstats because I didn't want to change my MQTT -> influxdb pipeline when I migrated from pvstats
   #    # to modbus4mqtt for these numbers.
   #
+  - pub_topic: "solar"
+    json_key: device_type_code
+    type: uint16
+    address: 4999
+    table: input
+    pub_only_on_change: false
+    value_map:
+      sh5k-20: 0xd09
+      sh3k6: 0xd06
+      sh4k6: 0xd07
+      sh5k-v13: 0xd03
+      sh5k-30: 0xd0c
+      sh3k6-30: 0xd0a
+      sh4k6-30: 0xd0b
+      sh5.0rs: 0xd0f
+      sh3.6rs: 0xd0d
+      sh4.6rs: 0xd0e
+      sh6.0rs: 0xd10
+      sh10rt: 0xe03
+      sh8.0rt: 0xe02
+      sh6.0rt: 0xe01
+      sh5.0rt: 0xe00
+  - pub_topic: "solar"
+    json_key: nominal_output_power
+    type: uint16
+    address: 5000
+    table: input
+    pub_only_on_change: false
+    scale: 0.1
+    unit: 'kW'
+  - pub_topic: "solar"
+    json_key: output_type
+    type: uint16
+    address: 5001
+    table: input
+    pub_only_on_change: false
   - pub_topic: "solar"
     json_key: daily_output_energy
     type: uint16
@@ -393,6 +446,7 @@ registers:
     pub_only_on_change: false
     scale: 0.1
     unit: 'kWh'
+    sensor_type: measurement
   - pub_topic: "solar"
     json_key: daily_export_power_from_pv
     type: uint16
@@ -591,6 +645,7 @@ registers:
     pub_only_on_change: false
     scale: 0.1
     unit: 'kWh'
+    sensor_type: measurement
   - pub_topic: "solar"
     json_key: battery_capacity
     type: uint16
@@ -631,3 +686,122 @@ registers:
     pub_only_on_change: false
     scale: 0.1
     unit: 'kWh'
+    sensor_type: measurement
+  - pub_topic: "solar"
+    json_key: bms_status
+    type: uint16
+    address: 13099
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: max_charging_current
+    type: uint16
+    address: 13100
+    table: input
+    pub_only_on_change: false
+    unit: 'A'
+  - pub_topic: "solar"
+    json_key: max_discharging_current
+    type: uint16
+    address: 13101
+    table: input
+    pub_only_on_change: false
+    unit: 'A'
+  - pub_topic: "solar"
+    json_key: warning
+    type: uint16
+    address: 13102
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: protection
+    type: uint16
+    address: 13103
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: fault_1
+    type: uint16
+    address: 13104
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: fault_2
+    type: uint16
+    address: 13105
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: soc
+    type: uint16
+    address: 13106
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: soh
+    type: uint16
+    address: 13107
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: battery_current_2
+    type: uint16
+    address: 13108
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: battery_voltage_2
+    type: uint16
+    address: 13109
+    table: input
+    pub_only_on_change: false
+    scale: 0.01
+    unit: 'V'
+  - pub_topic: "solar"
+    json_key: cycle_count
+    type: uint16
+    address: 13110
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: average_cell_voltage
+    type: uint16
+    address: 13111
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: max_cell_voltage
+    type: uint16
+    address: 13112
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: min_cell_voltage
+    type: uint16
+    address: 13113
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: battery_pack_voltage
+    type: uint16
+    address: 13114
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: average_cell_temp
+    type: int16
+    address: 13115
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: max_cell_temp
+    type: int16
+    address: 13116
+    table: input
+    pub_only_on_change: false
+  - pub_topic: "solar"
+    json_key: min_cell_temp
+    type: int16
+    address: 13117
+    table: input
+    pub_only_on_change: false

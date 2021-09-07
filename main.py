@@ -85,34 +85,42 @@ def modbus4mqtt_to_home_assistant(filename: str):
             return
     target_dict = {'sensor': [], 'binary_sensor': []}
     for register in content['registers']:
+        sensor = {
+            'platform': 'mqtt',
+            'state_topic': f'modbus4mqtt/{register["pub_topic"]}',
+        }
         if 'json_key' in register:
-            sensor = {
-                'platform': 'mqtt',
-                'name': f'{register["json_key"]}',
-                'state_topic': f'modbus4mqtt/{register["pub_topic"]}',
-                'value_template': f'{{{{ value_json.{register["json_key"]} }}}}',
-                'unique_id': f'sungrow.{register["json_key"]}',
-            }
-            if 'unit' in register:
-                sensor['unit_of_measurement'] = register['unit']
-                if 'class' in register:
-                    sensor['device_class'] = register['class']
-                elif 'A' == register['unit']:
-                    sensor['device_class'] = 'current'
-                elif 'V' == register['unit']:
-                    sensor['device_class'] = 'voltage'
-                elif 'Wh' == register['unit'] or 'kWh' == register['unit']:
-                    sensor['device_class'] = 'energy'
-                elif 'W' == register['unit'] or 'kW' == register['unit']:
-                    sensor['device_class'] = 'power'
-                elif '\\xC2\\xB0C' == register['unit']:
-                    sensor['device_class'] = 'temperature'
-            if 'sensor_type' in register and register['sensor_type'] == 'binary':
+            sensor['name'] = f'{register["json_key"]}'
+            sensor['value_template'] = f'{{{{ value_json.{register["json_key"]} }}}}'
+            sensor['unique_id'] = f'sungrow.{register["json_key"]}'
+        else:
+            sensor['name'] = f'{register["pub_topic"]}'
+            sensor['unique_id'] = f'sungrow.{register["pub_topic"]}'
+        if 'unit' in register:
+            sensor['unit_of_measurement'] = register['unit']
+            if 'class' in register:
+                sensor['device_class'] = register['class']
+            elif 'A' == register['unit']:
+                sensor['device_class'] = 'current'
+            elif 'V' == register['unit']:
+                sensor['device_class'] = 'voltage'
+            elif 'Wh' == register['unit'] or 'kWh' == register['unit']:
+                sensor['device_class'] = 'energy'
+            elif 'W' == register['unit'] or 'kW' == register['unit']:
+                sensor['device_class'] = 'power'
+            elif '\\xC2\\xB0C' == register['unit']:
+                sensor['device_class'] = 'temperature'
+        if 'sensor_type' in register:
+            if register['sensor_type'] == 'binary':
                 sensor['payload_off'] = 0
                 sensor['payload_on'] = 1
                 target_dict['binary_sensor'].append(sensor)
-            else:
-                target_dict['sensor'].append(sensor)
+                continue
+            elif register['sensor_type'] == 'measurement':
+                sensor['state_class'] = 'measurement'
+                sensor['last_reset_topic'] = sensor['state_topic']
+                sensor['last_reset_value_template'] = '1970-01-01T00:00:00+00:00'
+        target_dict['sensor'].append(sensor)
     dump = yaml.dump(target_dict, Dumper=MyDumper, default_flow_style=False)
     dump = dump.replace('\\xC2\\xB0C', '\\xB0C')
     print(dump)
