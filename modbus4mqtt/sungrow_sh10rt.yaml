@@ -271,7 +271,7 @@ registers:
     scale: 0.1
     unit: 'A'
   - pub_topic: "solar"
-    json_key: total_pv_power
+    json_key: total_dc_power
     type: uint32
     address: 5016
     table: input
