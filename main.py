@@ -92,10 +92,10 @@ def modbus4mqtt_to_home_assistant(filename: str):
         if 'json_key' in register:
             sensor['name'] = f'{register["json_key"]}'
             sensor['value_template'] = f'{{{{ value_json.{register["json_key"]} }}}}'
-            sensor['unique_id'] = f'sungrow_{register["json_key"]}'
+            sensor['unique_id'] = f'sungrow.{register["json_key"]}'  # TODO replace . with _
         else:
             sensor['name'] = f'{register["pub_topic"]}'
-            sensor['unique_id'] = f'sungrow_{register["pub_topic"]}'
+            sensor['unique_id'] = f'sungrow.{register["pub_topic"]}'  # TODO replace . with _
         if 'unit' in register:
             sensor['unit_of_measurement'] = register['unit']
             if 'class' in register:
