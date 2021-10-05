@@ -1,3 +1,5 @@
+modbus4mqtt_sensor.yaml
+modbus4mqtt_binary_sensor.yaml
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,pycharm+all
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,pycharm+all

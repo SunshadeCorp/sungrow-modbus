@@ -92,10 +92,10 @@ def modbus4mqtt_to_home_assistant(filename: str):
         if 'json_key' in register:
             sensor['name'] = f'{register["json_key"]}'
             sensor['value_template'] = f'{{{{ value_json.{register["json_key"]} }}}}'
-            sensor['unique_id'] = f'sungrow.{register["json_key"]}'
+            sensor['unique_id'] = f'sungrow_{register["json_key"]}'
         else:
             sensor['name'] = f'{register["pub_topic"]}'
-            sensor['unique_id'] = f'sungrow.{register["pub_topic"]}'
+            sensor['unique_id'] = f'sungrow_{register["pub_topic"]}'
         if 'unit' in register:
             sensor['unit_of_measurement'] = register['unit']
             if 'class' in register:
@@ -121,8 +121,16 @@ def modbus4mqtt_to_home_assistant(filename: str):
                 sensor['last_reset_topic'] = sensor['state_topic']
                 sensor['last_reset_value_template'] = '1970-01-01T00:00:00+00:00'
         target_dict['sensor'].append(sensor)
+    with open('modbus4mqtt_sensor.yaml', 'w', encoding='utf8') as outfile:
+        dump = yaml.dump(target_dict['sensor'], default_flow_style=False)
+        dump = dump.replace('\\xC2\\xB0C', '°C')
+        outfile.write(dump)
+    with open('modbus4mqtt_binary_sensor.yaml', 'w', encoding='utf8') as outfile:
+        dump = yaml.dump(target_dict['binary_sensor'], default_flow_style=False)
+        dump = dump.replace('\\xC2\\xB0C', '°C')
+        outfile.write(dump)
     dump = yaml.dump(target_dict, Dumper=MyDumper, default_flow_style=False)
-    dump = dump.replace('\\xC2\\xB0C', '\\xB0C')
+    dump = dump.replace('\\xC2\\xB0C', '°C')
     print(dump)
 
 
