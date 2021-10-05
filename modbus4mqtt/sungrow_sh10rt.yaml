@@ -1,6 +1,6 @@
 ip: 192.168.178.66
 port: 502
-update_rate: 5
+update_rate: 2
 address_offset: 0
 variant: sungrow
 scan_batching: 100
