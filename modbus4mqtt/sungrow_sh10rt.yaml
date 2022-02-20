@@ -1,0 +1,735 @@
+ip: 192.168.178.66
+port: 502
+update_rate: 2
+address_offset: 0
+variant: sungrow
+scan_batching: 100
+registers:
+  #  #  - #pub_topic: "date_time/minutes"
+  #  #    address: 5003
+  #  #  - #pub_topic: "date_time/seconds"
+  #  #    address: 5004
+  - pub_topic: "start_stop"
+    value_map:
+      start: 0xcf
+      stop: 0xce
+    address: 12999
+    retain: true
+  - pub_topic: "battery_maintenance"
+    value_map:
+      maintenance: 0xaa
+    address: 13000
+    retain: true
+  #  - pub_topic: "load_control/mode"
+  #    value_map:
+  #      timer: 0
+  #      manual: 1
+  #      optimized: 2
+  #    address: 13001
+  #  - pub_topic: "load_control/timer/start_time_1_hours"
+  #    address: 13002
+  #  - pub_topic: "load_control/timer/start_time_1_minutes"
+  #    address: 13003
+  #  - pub_topic: "load_control/timer/end_time_1_hours"
+  #    address: 13004
+  #  - pub_topic: "load_control/timer/end_time_1_minutes"
+  #    address: 13005
+  #  - pub_topic: "load_control/timer/start_time_2_hours"
+  #    address: 13006
+  #  - pub_topic: "load_control/timer/start_time_2_minutes"
+  #    address: 13007
+  #  - pub_topic: "load_control/timer/end_time_2_hours"
+  #    address: 13008
+  #  - pub_topic: "load_control/timer/end_time_2_minutes"
+  #    address: 13009
+  #  - pub_topic: "load_control/on_off "
+  #    value_map:
+  #      on: 170
+  #      off: 85
+  #    address: 13010
+  #  - pub_topic: "load_control/optimized/start_time_hours"
+  #    address: 13011
+  #  - pub_topic: "load_control/optimized/start_time_minutes"
+  #    address: 13012
+  #  - pub_topic: "load_control/optimized/end_time_hours"
+  #    address: 13013
+  #  - pub_topic: "load_control/optimized/end_time_minutes"
+  #    address: 13014
+  #  - pub_topic: "load_control/optimized/power"
+  #    address: 13015
+  #  - pub_topic: "ems/EMS_MODE"
+  #    set_topic: "ems/EMS_MODE/set"
+  #    address: 13049
+  #    value_map:
+  #      self: 0
+  #      forced: 2
+  #      external: 3
+  #  - pub_topic: "ems/CHARGE_DISCHARGE_COMMAND"
+  #    set_topic: "ems/CHARGE_DISCHARGE_COMMAND/set"
+  #    address: 13050
+  #    value_map:
+  #      charge: 0xAA
+  #      discharge: 0xBB
+  #      stop: 0xCC
+  #  - pub_topic: "ems/CHARGE_DISCHARGE_POWER"
+  #    set_topic: "ems/CHARGE_DISCHARGE_POWER/set"
+  #    address: 13051
+  #  - pub_topic: "no_export/partial/limit"
+  #    set_topic: "no_export/partial/limit/set"
+  #    address: 13073
+  - pub_topic: "export_power_limitation"
+    value_map:
+      enable: 0xaa
+      disable: 0x55
+    address: 13086
+    retain: true
+  - pub_topic: "reserved_soc_for_backup"
+    address: 13099
+    unit: '%'
+    retain: true
+  #  - pub_topic: "bat_usage_time/weekday_usage/start_time_1_hours"
+  #    address: 13122
+  #  - pub_topic: "bat_usage_time/weekday_usage/start_time_1_minutes"
+  #    address: 13123
+  #  - pub_topic: "bat_usage_time/weekday_usage/end_time_1_hours"
+  #    set_topic: "bat_usage_time/weekday_usage/end_time_1_hours/set"
+  #    address: 13124
+  #  - pub_topic: "bat_usage_time/weekday_usage/end_time_1_minutes"
+  #    address: 13125
+  #  - pub_topic: "bat_usage_time/weekday_usage/start_time_2_hours"
+  #    address: 13126
+  #  - pub_topic: "bat_usage_time/weekday_usage/start_time_2_minutes"
+  #    address: 13127
+  #  - pub_topic: "bat_usage_time/weekday_usage/end_time_2_hours"
+  #    set_topic: "bat_usage_time/weekday_usage/end_time_2_hours/set"
+  #    address: 13128
+  #  - pub_topic: "bat_usage_time/weekday_usage/end_time_2_minutes"
+  #    address: 13129
+  #  - pub_topic: "bat_usage_time/weekend_usage"
+  #    set_topic: "bat_usage_time/weekend_usage/set"
+  #    value_map:
+  #      disabled: 85
+  #      enabled: 170
+  #    address: 13130
+  #  - pub_topic: "bat_usage_time/weekend_usage/start_time_1_hours"
+  #    address: 13131
+  #  - pub_topic: "bat_usage_time/weekend_usage/start_time_1_minutes"
+  #    address: 13132
+  #  - pub_topic: "bat_usage_time/weekend_usage/end_time_1_hours"
+  #    address: 13133
+  #  - pub_topic: "bat_usage_time/weekend_usage/end_time_1_minutes"
+  #    address: 13134
+  #  - pub_topic: "bat_usage_time/weekend_usage/start_time_2_hours"
+  #    address: 13135
+  #  - pub_topic: "bat_usage_time/weekend_usage/start_time_2_minutes"
+  #    address: 13136
+  #  - pub_topic: "bat_usage_time/weekend_usage/end_time_2_hours"
+  #    address: 13137
+  #  - pub_topic: "bat_usage_time/weekend_usage/end_time_2_minutes"
+  #    address: 13138
+  #  - pub_topic: "forced_charge/mode"
+  #    set_topic: "forced_charge/mode/set"
+  #    retain: true
+  #    address: 13139
+  #    value_map:
+  #      enabled: 170
+  #      disabled: 85
+  #  - pub_topic: "forced_charge/weekdays"
+  #    set_topic: "forced_charge/weekdays/set"
+  #    retain: true
+  #    address: 13140
+  #    value_map:
+  #      all_days: 1
+  #      weekdays: 0
+  #  - pub_topic: "forced_charge/period_1/start_hours"
+  #    set_topic: "forced_charge/period_1/start_hours/set"
+  #    address: 13141
+  #  - pub_topic: "forced_charge/period_1/start_minutes"
+  #    set_topic: "forced_charge/period_1/start_minutes/set"
+  #    address: 13142
+  #  - pub_topic: "forced_charge/period_1/end_hours"
+  #    set_topic: "forced_charge/period_1/end_hours/set"
+  #    address: 13143
+  #  - pub_topic: "forced_charge/period_1/end_minutes"
+  #    set_topic: "forced_charge/period_1/end_minutes/set"
+  #    address: 13144
+  #  - pub_topic: "forced_charge/period_1/target_soc"
+  #    set_topic: "forced_charge/period_1/target_soc/set"
+  #    address: 13145
+  #  - pub_topic: "forced_charge/period_2/start_hours"
+  #    set_topic: "forced_charge/period_2/start_hours/set"
+  #    address: 13146
+  #  - pub_topic: "forced_charge/period_2/start_minutes"
+  #    set_topic: "forced_charge/period_2/start_minutes/set"
+  #    address: 13147
+  #  - pub_topic: "forced_charge/period_2/end_hours"
+  #    set_topic: "forced_charge/period_2/end_hours/set"
+  #    address: 13148
+  #  - pub_topic: "forced_charge/period_2/end_minutes"
+  #    set_topic: "forced_charge/period_2/end_minutes/set"
+  #    address: 13149
+  #  - pub_topic: "forced_charge/period_2/target_soc"
+  #    set_topic: "forced_charge/period_2/target_soc/set"
+  #    address: 13150
+  #
+  #    # The following registers are published together in one JSON message to replicate the functionality
+  #    # of pvstats because I didn't want to change my MQTT -> influxdb pipeline when I migrated from pvstats
+  #    # to modbus4mqtt for these numbers.
+  #
+  - pub_topic: device_type_code
+    type: uint16
+    address: 4999
+    table: input
+    retain: true
+    value_map:
+      sh5k-20: 0xd09
+      sh3k6: 0xd06
+      sh4k6: 0xd07
+      sh5k-v13: 0xd03
+      sh5k-30: 0xd0c
+      sh3k6-30: 0xd0a
+      sh4k6-30: 0xd0b
+      sh5.0rs: 0xd0f
+      sh3.6rs: 0xd0d
+      sh4.6rs: 0xd0e
+      sh6.0rs: 0xd10
+      sh10rt: 0xe03
+      sh8.0rt: 0xe02
+      sh6.0rt: 0xe01
+      sh5.0rt: 0xe00
+  - pub_topic: nominal_output_power
+    type: uint16
+    address: 5000
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kW'
+  - pub_topic: output_type
+    type: uint16
+    address: 5001
+    table: input
+    retain: true
+  - pub_topic: daily_output_energy
+    type: uint16
+    address: 5002
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+  - pub_topic: total_output_energy
+    type: uint32
+    address: 5003
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+  #  - pub_topic: "solar"
+  #    json_key: total_run_time
+  #    type: uint16
+  #    address: 5005
+  #    table: input
+  #    retain: true
+  - pub_topic: inside_temperature
+    type: int16
+    address: 5007
+    table: input
+    retain: true
+    scale: 0.1
+    unit: '°C'
+  - pub_topic: mppt1_voltage
+    type: uint16
+    address: 5010
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'V'
+  - pub_topic: mppt1_current
+    type: uint16
+    address: 5011
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'A'
+  - pub_topic: mppt2_voltage
+    type: uint16
+    address: 5012
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'V'
+  - pub_topic: mppt2_current
+    type: uint16
+    address: 5013
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'A'
+  - pub_topic: total_dc_power
+    type: uint32
+    address: 5016
+    table: input
+    retain: true
+    unit: 'W'
+  - pub_topic: phase_a_voltage
+    type: uint16
+    address: 5018
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'V'
+  - pub_topic: phase_b_voltage
+    type: uint16
+    address: 5019
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'V'
+  - pub_topic: phase_c_voltage
+    type: uint16
+    address: 5020
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'V'
+  #  - pub_topic: "solar"
+  #    json_key: inverter_current
+  #    type: uint16
+  #    address: 5021
+  #    table: input
+  #    retain: true
+  #    scale: 0.1
+  #  - pub_topic: "solar"
+  #    json_key: inverter_ac_output
+  #    type: uint16
+  #    address: 5030
+  #    table: input
+  #    retain: true
+  - pub_topic: reactive_power
+    type: int32
+    address: 5032
+    table: input
+    retain: true
+  - pub_topic: power_factor
+    type: int16
+    address: 5034
+    table: input
+    retain: true
+    scale: 0.001
+  - pub_topic: grid_frequency
+    type: uint16
+    address: 5035
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'Hz'
+  - pub_topic: system_state
+    type: uint16
+    address: 12999
+    table: input
+    retain: true
+    value_map:
+      stop: 0x2
+      standby: 0x8
+      initial_standby: 0x10
+      startup: 0x20
+      running: 0x40
+      fault: 0x100
+      running_in_maintain_mode: 0x400
+      running_in_forced_mode: 0x800
+      running_in_off_grid_mode: 0x1000
+      restarting: 0x2501
+      running_in_external_ems_mode: 0x4000
+  - pub_topic: running_state
+    type: uint16
+    address: 13000
+    table: input
+    retain: true
+  - pub_topic: running_state_pv_power
+    type: uint16
+    address: 13000
+    table: input
+    retain: true
+    mask: 0x1
+    sensor_type: 'binary'
+  - pub_topic: running_state_battery_charging
+    type: uint16
+    address: 13000
+    table: input
+    retain: true
+    mask: 0x2
+    shift: 1
+    sensor_type: 'binary'
+  - pub_topic: running_state_battery_discharging
+    type: uint16
+    address: 13000
+    table: input
+    retain: true
+    mask: 0x4
+    shift: 2
+    sensor_type: 'binary'
+  - pub_topic: running_state_positive_load_power
+    type: uint16
+    address: 13000
+    table: input
+    retain: true
+    mask: 0x8
+    shift: 3
+    sensor_type: 'binary'
+  - pub_topic: running_state_feed_in_power
+    type: uint16
+    address: 13000
+    table: input
+    retain: true
+    mask: 0x10
+    shift: 4
+    sensor_type: 'binary'
+  - pub_topic: running_state_import_power_from_grid
+    type: uint16
+    address: 13000
+    table: input
+    retain: true
+    mask: 0x20
+    shift: 5
+    sensor_type: 'binary'
+  - pub_topic: running_state_reserved
+    type: uint16
+    address: 13000
+    table: input
+    retain: true
+    mask: 0x40
+    shift: 6
+    sensor_type: 'binary'
+  - pub_topic: running_state_negative_load_power
+    type: uint16
+    address: 13000
+    table: input
+    retain: true
+    mask: 0x80
+    shift: 7
+    sensor_type: 'binary'
+  - pub_topic: daily_pv_generation
+    type: uint16
+    address: 13001
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+  - pub_topic: total_pv_generation
+    type: uint32
+    address: 13002
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+    sensor_type: measurement
+  - pub_topic: daily_export_power_from_pv
+    type: uint16
+    address: 13004
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+  - pub_topic: total_export_energy_from_pv
+    type: uint32
+    address: 13005
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+  - pub_topic: load_power
+    type: int32
+    address: 13007
+    table: input
+    retain: true
+    unit: 'W'
+  - pub_topic: export_power
+    type: int32
+    address: 13009
+    table: input
+    retain: true
+    unit: 'W'
+  - pub_topic: daily_battery_charge_energy_from_pv
+    type: uint16
+    address: 13011
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+  - pub_topic: total_battery_charge_energy_from_pv
+    type: uint32
+    address: 13012
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+  - pub_topic: co2_reduction
+    type: uint32
+    address: 13014
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kg'
+  - pub_topic: daily_direct_energy_consumption
+    type: uint16
+    address: 13016
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+  - pub_topic: total_direct_energy_consumption
+    type: uint32
+    address: 13017
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+  - pub_topic: battery_voltage
+    type: uint16
+    address: 13019
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'V'
+  - pub_topic: battery_current
+    type: uint16
+    address: 13020
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'A'
+  - pub_topic: battery_power
+    type: uint16
+    address: 13021
+    table: input
+    retain: true
+    unit: 'W'
+  - pub_topic: battery_level
+    type: uint16
+    address: 13022
+    table: input
+    retain: true
+    scale: 0.1
+    unit: '%'
+    class: 'battery'
+  - pub_topic: battery_state_of_health
+    type: uint16
+    address: 13023
+    table: input
+    retain: true
+    scale: 0.1
+    unit: '%'
+  - pub_topic: battery_temperature
+    type: int16
+    address: 13024
+    table: input
+    retain: true
+    scale: 0.1
+    unit: '°C'
+  - pub_topic: daily_battery_discharge_energy
+    type: uint16
+    address: 13025
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+  - pub_topic: total_battery_discharge_energy
+    type: uint32
+    address: 13026
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+    sensor_type: measurement
+  - pub_topic: self_consumption_of_today
+    type: uint16
+    address: 13028
+    table: input
+    retain: true
+    scale: 0.1
+    unit: '%'
+  - pub_topic: grid_state
+    type: uint16
+    address: 13029
+    table: input
+    retain: true
+  #    value_map:
+  #      off_grid: 170
+  #      on_grid: 85
+  - pub_topic: phase_a_current
+    type: int16
+    address: 13030
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'A'
+  - pub_topic: phase_b_current
+    type: int16
+    address: 13031
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'A'
+  - pub_topic: phase_c_current
+    type: int16
+    address: 13032
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'A'
+  - pub_topic: total_active_power
+    type: int32
+    address: 13033
+    table: input
+    retain: true
+    unit: 'W'
+  - pub_topic: daily_import_energy
+    type: uint16
+    address: 13035
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+  - pub_topic: total_import_energy
+    type: uint32
+    address: 13036
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+    sensor_type: measurement
+  - pub_topic: battery_capacity
+    type: uint16
+    address: 13038
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+  - pub_topic: daily_charge_energy
+    type: uint16
+    address: 13039
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+  - pub_topic: total_charge_energy
+    type: uint32
+    address: 13040
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+    sensor_type: measurement
+  - pub_topic: daily_export_energy
+    type: uint16
+    address: 13044
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+  - pub_topic: total_export_energy
+    type: uint32
+    address: 13045
+    table: input
+    retain: true
+    scale: 0.1
+    unit: 'kWh'
+    sensor_type: measurement
+  - pub_topic: bms_status
+    type: uint16
+    address: 13099
+    table: input
+    retain: true
+  - pub_topic: max_charging_current
+    type: uint16
+    address: 13100
+    table: input
+    retain: true
+    unit: 'A'
+  - pub_topic: max_discharging_current
+    type: uint16
+    address: 13101
+    table: input
+    retain: true
+    unit: 'A'
+  - pub_topic: warning
+    type: uint16
+    address: 13102
+    table: input
+    retain: true
+  - pub_topic: protection
+    type: uint16
+    address: 13103
+    table: input
+    retain: true
+  - pub_topic: fault_1
+    type: uint16
+    address: 13104
+    table: input
+    retain: true
+  - pub_topic: fault_2
+    type: uint16
+    address: 13105
+    table: input
+    retain: true
+  - pub_topic: soc
+    type: uint16
+    address: 13106
+    table: input
+    retain: true
+  - pub_topic: soh
+    type: uint16
+    address: 13107
+    table: input
+    retain: true
+  - pub_topic: battery_current_2
+    type: uint16
+    address: 13108
+    table: input
+    retain: true
+  - pub_topic: battery_voltage_2
+    type: uint16
+    address: 13109
+    table: input
+    retain: true
+    scale: 0.01
+    unit: 'V'
+  - pub_topic: cycle_count
+    type: uint16
+    address: 13110
+    table: input
+    retain: true
+  - pub_topic: average_cell_voltage
+    type: uint16
+    address: 13111
+    table: input
+    retain: true
+  - pub_topic: max_cell_voltage
+    type: uint16
+    address: 13112
+    table: input
+    retain: true
+  - pub_topic: min_cell_voltage
+    type: uint16
+    address: 13113
+    table: input
+    retain: true
+  - pub_topic: battery_pack_voltage
+    type: uint16
+    address: 13114
+    table: input
+    retain: true
+  - pub_topic: average_cell_temp
+    type: int16
+    address: 13115
+    table: input
+    retain: true
+  - pub_topic: max_cell_temp
+    type: int16
+    address: 13116
+    table: input
+    retain: true
+  - pub_topic: min_cell_temp
+    type: int16
+    address: 13117
+    table: input
+    retain: true
