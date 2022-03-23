@@ -74,9 +74,42 @@ registers:
   #  - pub_topic: "ems/CHARGE_DISCHARGE_POWER"
   #    set_topic: "ems/CHARGE_DISCHARGE_POWER/set"
   #    address: 13051
+  #  - pub_topic: "battery_type"
+  #    set_topic: "battery_type/set"
+  #    type: uint16
+  #    address: 13054
+  #    retain: true
+  #  - pub_topic: "battery_nominal_voltage"
+  #    type: uint16
+  #    address: 13055
+  #    retain: true
+  #    scale: 0.1
+  #    unit: 'V'
+  #  - pub_topic: "battery_capacity_specified"
+  #    type: uint16
+  #    address: 13056
+  #    retain: true
+  #    unit: 'Ah'
+  - pub_topic: "max_soc"
+    type: uint16
+    address: 13057
+    retain: true
+    scale: 0.1
+    unit: '%'
+  - pub_topic: "min_soc"
+    type: uint16
+    address: 13058
+    retain: true
+    scale: 0.1
+    unit: '%'
   #  - pub_topic: "no_export/partial/limit"
   #    set_topic: "no_export/partial/limit/set"
   #    address: 13073
+  - pub_topic: "export_power_limitation_value"
+    type: uint16
+    address: 13073
+    retain: true
+    unit: 'W'
   - pub_topic: "export_power_limitation"
     value_map:
       enable: 0xaa
@@ -85,8 +118,8 @@ registers:
     retain: true
   - pub_topic: "reserved_soc_for_backup"
     address: 13099
-    unit: '%'
     retain: true
+    unit: '%'
   #  - pub_topic: "bat_usage_time/weekday_usage/start_time_1_hours"
   #    address: 13122
   #  - pub_topic: "bat_usage_time/weekday_usage/start_time_1_minutes"
